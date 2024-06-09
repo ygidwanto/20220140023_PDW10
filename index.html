@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM Javascript</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <input type="text" placeholder="Search..." class="search-input">
+        <div class="menu" id="menu">
+            <a href="#">Beranda</a>
+            <a href="#">Log Out</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h3>Pendaftaran Pemintatan</h3>
+        </div>
+        <div class="content">
+            <form id="registrationForm">
+                <label for="nama">Nama</label>
+                <input type="text" placeholder="Nama anda" id="nama">
+
+                <label for="nim">NIM</label>
+                <input type="text" placeholder="NIM anda" id="nim">
+
+                <p>Pemintatan pada bidang:</p>
+                <input type="radio" name="pemintatan" id="programming" value="Programming">
+                <label for="programming">Programming</label><br>
+                <input type="radio" name="pemintatan" id="desain" value="Desain">
+                <label for="desain">Desain</label><br>
+                <input type="radio" name="pemintatan" id="jaringan" value="Jaringan">
+                <label for="jaringan">Jaringan</label><br>
+                <input type="radio" name="pemintatan" id="data" value="Data">
+                <label for="data">Data</label><br>
+
+                <label for="angkatan">Angkatan</label>
+                <select id="angkatan">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+
+                <label for="tanggal">Tanggal</label>
+                <input type="date" id="tanggal">
+
+                <label for="alamat">Alamat</label>
+                <textarea placeholder="Tulis alamat mu disini" name="alamat" id="alamat" cols="30" rows="5"></textarea>
+
+                <button type="button" onclick="kirimData()">Kirim</button>
+            </form>
+            <img src="pppppp.jpg" alt="Peminatan Image" class="peminatan-image">
+        </div>
+        <div id="dropdown" class="dropdown-content" style="display:none;">
+            <p><strong>Nama:</strong> <span id="dropdownNama"></span></p>
+            <p><strong>NIM:</strong> <span id="dropdownNim"></span></p>
+            <p><strong>Pemintatan:</strong> <span id="dropdownPemintatan"></span></p>
+            <p><strong>Angkatan:</strong> <span id="dropdownAngkatan"></span></p>
+            <p><strong>Tanggal:</strong> <span id="dropdownTanggal"></span></p>
+            <p><strong>Alamat:</strong> <span id="dropdownAlamat"></span></p>
+        </div>
+    </div>
+    <script>
+        function kirimData() {
+            let nama = document.getElementById('nama').value;
+            let nim = document.getElementById('nim').value;
+            let pemintatan = document.querySelector('input[name="pemintatan"]:checked').value;
+            let angkatan = document.getElementById('angkatan').value;
+            let tanggal = document.getElementById('tanggal').value;
+            let alamat = document.getElementById('alamat').value;
+
+            let message = `Nama: ${nama}, NIM: ${nim}, Peminatan: ${pemintatan}, Angkatan: ${angkatan}, Tanggal: ${tanggal}, Alamat: ${alamat}`;
+
+            alert(message);
+
+            document.getElementById('dropdownNama').textContent = nama;
+            document.getElementById('dropdownNim').textContent = nim;
+            document.getElementById('dropdownPemintatan').textContent = pemintatan;
+            document.getElementById('dropdownAngkatan').textContent = angkatan;
+            document.getElementById('dropdownTanggal').textContent = tanggal;
+            document.getElementById('dropdownAlamat').textContent = alamat;
+            document.getElementById('dropdown').style.display = 'block';
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
